@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+</head>
+<body>
+<div class="board-form">
+    <h2>Update Board</h2>
+    <form th:action="@{/update}" th:object="${post}" method="post">
+        <input type="hidden" name="id" th:value="${id}">
+<!--        <input type="hidden" name="page" th:value="${currentPage}">-->
+        <label>Name:</label><br>
+        <input type="text" id="name" th:field="*{name}" required><br>
+
+        <label>Title:</label><br>
+        <input type="text" id="title" th:field="*{title}" required><br>
+
+        <label>Content:</label><br>
+        <input type="text" id="content" th:field="*{content}" required><br>
+
+        <label>Password (for verification):</label><br>
+        <input type="text" id="password" th:field="*{password}" required><br>
+
+        <input type="submit" value="Update" class="button">
+    </form>
+    <div th:if="${message}" class="error">
+        <p th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>
